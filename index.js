@@ -1,5 +1,3 @@
-// Temporary
-const currentTime = "2022-12-05T11:45:21";
 let timeElements = $(".time-block");
 
 function init() {
@@ -14,16 +12,14 @@ function init() {
 }
 
 function setTime() {
-  $("#currentDay").text(
-    moment(currentTime).format("dddd, MMMM Do, YYYY, h:mm:ss A")
-  );
+  $("#currentDay").text(moment().format("dddd, MMMM Do, YYYY, h:mm:ss A"));
 }
 
 function colorTime() {
-  let now = moment(currentTime).startOf("hour");
+  let now = moment().startOf("hour");
 
   timeElements.each((index, element) => {
-    let hour = moment(currentTime).startOf("date").add(element.id, "h");
+    let hour = moment().startOf("date").add(element.id, "h");
     if (hour.isBefore(now)) {
       element.children[1].className = "past";
     } else if (hour.isAfter(now)) {
